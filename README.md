@@ -10,7 +10,7 @@ In October/November 2014, I attended PhreakNIC 18 in Nashville. I had been playi
 
 **_NSAKEY.v2.dive.rule** is the improved version of my attempt to compete against dive.rule. You can use "head -n X" (With X being a number between 1 and 123289) and the output to another file if you want to create a smaller rule set.
 
-**bench.png** is a visualization of the text graph below.
+**bench.png** is the pretty graph shown below.
 
 **nsa64.rule** is the first 64 rules from _NSAKEY.v2.dive.rule. For the record, it cracked 42% of the Battlefield Heroes Beta hashes. best64.rule is unquestionably better, but maybe this set of rules will be helpful to someone.
 
