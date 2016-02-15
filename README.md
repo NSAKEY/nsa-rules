@@ -22,31 +22,9 @@ In October/November 2014, I attended PhreakNIC 18 in Nashville. I had been playi
 
 ## Graph & Explanation
 
-This section's going to be long, so I put it at the bottom. If you want technical explanations, you're in the right section. Taken straight from my slides:
+This section's going to be long, so I put it at the bottom. If you want technical explanations, you're in the right section. Here's a visualization of how the different rules performed against each other:
 
-╔══════════════════════════╦════════╦════════╦════════╦════════╗
-║       Name               ║ #Rules ║ Crack% ║  v1 %  ║  v2 %  ║
-╠══════════════════════════╬════════╬════════╬════════╬════════╣
-║ dive                     ║ 123289 ║ 74.16% ║ 74.12% ║ 74.43% ║
-╠══════════════════════════╬════════╬════════╬════════╬════════╣
-║ generated                ║ 14729  ║ 69.90% ║ 66.40% ║ 67.30% ║
-╠══════════════════════════╬════════╬════════╬════════╬════════╣
-║ rockyou-30000            ║ 30000  ║ 69.72% ║ 69.00% ║ 69.75% ║
-╠══════════════════════════╬════════╬════════╬════════╬════════╣
-║ d3ad0ne                  ║ 35404  ║ 68.77% ║ 69.61% ║ 70.30% ║
-╠══════════════════════════╬════════╬════════╬════════╬════════╣
-║ generated2               ║ 65536  ║ 64.16% ║ 69.90% ║ 72.29% ║
-╠══════════════════════════╬════════╬════════╬════════╬════════╣
-║ T0XlCv1                  ║ 12000  ║ 63.80% ║ 66.04% ║ 66.60% ║
-╠══════════════════════════╬════════╬════════╬════════╬════════╣
-║ InsidePro-HashManager    ║ 6497   ║ 61.42% ║ 63.75% ║ 64.37% ║
-╠══════════════════════════╬════════╬════════╬════════╬════════╣
-║ best64                   ║ 78     ║ 59.07% ║ 43.35% ║ 43.96% ║
-╠══════════════════════════╬════════╬════════╬════════╬════════╣
-║ InsidePro-PasswordsPro   ║ 3141   ║ 57.52% ║ 61.16% ║ 61.57% ║
-╚══════════════════════════╩════════╩════════╩════════╩════════╝
-
-A visualization of the above graph can be found in bench.png.
+![ScreenShot](bench.png)
 
 Explanation: I took a count of the number of rules in each rule set that comes with cudaHashcat (1.3.1 or so, if anyone cares). Then, I downloaded a bunch of cracked passwords from previous data breaches and made two dictionaries out of them (More on that below). Those dictionaries were then fed to PACK, which generated rules based on the passes. The end result was two lists of rules ranked by most to least common. From there I simply used "head -n X" and redirected to a text file, and I magically had rule sets which contained the same number of rules as those found in hashcat. The graph itself shows the results of my 3-way head-to-head competition.
 
