@@ -22,13 +22,17 @@ In October/November 2014, I attended PhreakNIC 18 in Nashville. I had been playi
 
 ## Graph & Explanation
 
-This section's going to be long, so I put it at the bottom. If you want technical explanations, you're in the right section. Here's a visualization of how the different rules performed against each other:
+This section's going to be long, so I put it at the bottom. If you want technical explanations, you're in the right section. Here's a table of how the different rules performed against each other, lifted directly from my slides:
+
+![ScreenShot](table.png)
+
+... And here's a graph using those numbers.
 
 ![ScreenShot](bench.png)
 
-Explanation: I took a count of the number of rules in each rule set that comes with cudaHashcat (1.3.1 or so, if anyone cares). Then, I downloaded a bunch of cracked passwords from previous data breaches and made two dictionaries out of them (More on that below). Those dictionaries were then fed to PACK, which generated rules based on the passes. The end result was two lists of rules ranked by most to least common. From there I simply used "head -n X" and redirected to a text file, and I magically had rule sets which contained the same number of rules as those found in hashcat. The graph itself shows the results of my 3-way head-to-head competition.
+Explanation: I took a count of the number of rules in each rule set that comes with cudaHashcat (1.3.1 or so, if anyone cares). Then, I downloaded a bunch of cracked passwords from previous data breaches and made two dictionaries out of them (More on that below). Those dictionaries were then fed to PACK, which generated rules based on the passes. The end result was two lists of rules ranked by most to least common. From there I simply used "head -n X" and redirected to a text file, and I magically had rule sets which contained the same number of rules as those found in hashcat. The table and graph show the results of my 3-way head-to-head competition.
 
-As for the columns themselves, here's what each one represents:
+As for the table's columns themselves, here's what each one represents:
 
 The **Name** column shows the name of the rule set.
 
