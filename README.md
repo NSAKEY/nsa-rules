@@ -20,6 +20,8 @@ In October/November 2014, I attended PhreakNIC 18 in Nashville. I had been playi
 
 **README.md** You are here.
 
+**table.png** A screenshot from my presentation that shows the effectiveness of the rules I generated vs what comes bundled in hashcat.
+
 ## Graph & Explanation
 
 This section's going to be long, so I put it at the bottom. If you want technical explanations, you're in the right section. Here's a table of how the different rules performed against each other, lifted directly from my slides:
@@ -43,3 +45,7 @@ The **#Rules** column lists the number of rules in a given rule set.
 **v1 %** represents the first attempt I made at generating rules. I had a ~3GB dictionary and fed it into [PACK](https://thesprawl.org/projects/pack/). This gave me 50GB of rules, which took roughly 2 or 3 days to generate on my desktop. That was too large for PACK. to depuclicate and rank by most to least common, so I had to sort them by popularity with sort and uniq. The dictionary was a combination of rockyou.txt, crackstation-human-only.txt, every found password on [hashes.org](http://hashes.org/public.php) as of around Feb. 2015, as well as everything on [http://www.adeptus-mechanicus.com/codex/hashpass/hashpass.php](adeptus-mechanicus.com). This version even included the found passes from various cracking competitions, which as the graph shows hurt my results slightly.
 
 **v2 %** represents the results from my second attempt at making rules. The v2 dictionary is just the v1 dictionary without the cracking competition passwords. Since the cracked percentages are slightly higher, I think it's safe to say that this is a solid case of "less is more" in action. In case you're curious, the raw rules file PACK generated was 15GB before de-duplication.
+
+## Conclusion
+
+hashcat's stock rule sets are very good, and you're probably not going to be able to generate rules which greatly outperform based on statistics alone. Some hand-tuning is required. This is best seen in the 3-way fight between best64.rule and my two attempts to build a better version of it. If you do, you're likely to run into a situation similar to the reason best64.rule actually has 78 rules. Short version of that story: 14 of the rules did really good in the competition to make best64, but they didn't crack anything in the real world, so 14 more rules were thrown in.
