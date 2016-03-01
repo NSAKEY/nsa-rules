@@ -32,6 +32,8 @@ This section's going to be long, so I put it at the bottom. If you want technica
 
 ![ScreenShot](bench.png)
 
+Note: After doing some recent beta testing, I realized that I can't account for how I originally came up with 59.07% found passes on best64, even after setting my clock back a year to work around the time bomb in 1.31 (A known buggy version) and going back to an older NVidia driver version. I also somehow obliterated my original run with best64.rule + rockyou.txt, so I'm left to conclude that this particular error was the result of PEBKAC, not the race condition I stumbled upon in 1.3x builds of cudaHashcat. The table and graph have been reworked to remove the PEBKAC error, while pwcrack.sh has been updated to add a unix timestamp to the filename in order to keep myself from accidentally rming stuff. Lesson learned: Bake time stamping into everything to differentiate runs, even if you think you'll never run a particular combination of things again.
+
 Explanation: I took a count of the number of rules in each rule set that comes with cudaHashcat (1.3.1 or so, if anyone cares). Then, I downloaded a bunch of cracked passwords from previous data breaches and made two dictionaries out of them (More on that below). Those dictionaries were then fed to PACK, which generated rules based on the passes. The end result was two lists of rules ranked by most to least common. From there I simply used "head -n X" and redirected to a text file, and I magically had rule sets which contained the same number of rules as those found in hashcat. The table and graph show the results of my 3-way head-to-head competition.
 
 As for the table's columns themselves, here's what each one represents:
