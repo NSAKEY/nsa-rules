@@ -23,10 +23,15 @@
 # $2 = Hash list, e.g. battlefield_heroes_beta_hashes.txt                     #
 # $3 = Rule set, e.g. best64.rule                                             #
 # $4 = Dictionary file, e.g. rockyou.txt                                      #
+# $UNIXTIME = The number of seconds since 01/01/1970.                         #
 #                                                                             #
 # An example command looks like this:                                         #
 #                                                                             #
 # ./pwcrack.sh 0 battlefield_heroes_beta best64.rule rockyou.txt              #
+#                                                                             #
+# That will generate a text file with a filename like:                        #
+#                                                                             #
+# battlefield_heroes_beta_best64.rule_1456684393_rockyou.txt                  #
 #                                                                             #
 # The script makes assumptions about the location of your hash list,          #
 # dictionary, rule set location, and even what version of hashcat you use.    #
@@ -34,6 +39,8 @@
 #                                                                             #
 ###############################################################################
 
+UNIXTIME=$(date +%s)
+
 cd ~/Downloads/cudaHashcat-2.01
 
-./cudaHashcat64.bin -m $1 -w 1 --potfile-disable -o ~/$2_$3_$4 ~/$2_hashes.txt -r rules/$3 ../../$4
+./cudaHashcat64.bin -m $1 -w 1 --potfile-disable -o ~/$2_$3_$4_$UNIXTIME ~/$2_hashes.txt -r rules/$3 ../../$4
